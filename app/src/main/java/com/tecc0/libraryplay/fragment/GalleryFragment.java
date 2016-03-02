@@ -28,10 +28,8 @@ public class GalleryFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
+        // TODO: add gallery(used Picasso
 
-        ListView lv = findById(view, R.id.listView);
-        lv.setAdapter(new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_checked, getResources().getStringArray(R.array.study_libraries_name)));
         return view;
     }
 

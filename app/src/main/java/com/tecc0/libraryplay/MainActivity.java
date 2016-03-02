@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tecc0.libraryplay.fragment.AboutFragment;
+import com.tecc0.libraryplay.fragment.GalleryFragment;
 import com.tecc0.libraryplay.fragment.HomeFragment;
 
 import butterknife.Bind;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity
                 replaceFragment(HomeFragment.newInstance());
                 break;
             case R.id.nav_gallery:
+                replaceFragment(GalleryFragment.newInstance());
                 break;
             case R.id.nav_recycler:
                 break;
