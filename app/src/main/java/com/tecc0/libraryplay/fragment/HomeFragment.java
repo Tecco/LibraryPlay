@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         ListView lv = findById(view, R.id.listView);
-        lv.setAdapter(new ArrayAdapter<String>(getActivity(),
+        lv.setAdapter(new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_checked, getResources().getStringArray(R.array.study_libraries_name)));
         return view;
     }

@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity
 
     private void initFragment() {
         final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit);
         ft.replace(R.id.content_view, HomeFragment.newInstance(), HomeFragment.newInstance().getClass().getSimpleName());
         ft.addToBackStack(null);
         ft.commit();
