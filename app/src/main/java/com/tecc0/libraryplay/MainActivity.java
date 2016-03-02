@@ -74,19 +74,19 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.nav_camera:
+            case R.id.nav_home:
                 replaceFragment(HomeFragment.newInstance());
                 break;
             case R.id.nav_gallery:
-                replaceFragment(AboutFragment.newInstance());
                 break;
-            case R.id.nav_slideshow:
+            case R.id.nav_recycler:
                 break;
-            case R.id.nav_manage:
+            case R.id.nav_tools:
                 break;
             case R.id.nav_share:
                 break;
-            case R.id.nav_send:
+            case R.id.nav_about:
+                replaceFragment(AboutFragment.newInstance());
                 break;
             default:
                 break;
