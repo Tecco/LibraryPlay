@@ -14,5 +14,5 @@
     <string name="drawer_about">About</string>
 
     <string name="home_fragment_title">Home fragment</string>
-    <string name="about_fragment_title">About fragment</string>
+    <string name="about_fragment_title">This App is Test App.\nI wanna study libraries I haven\'t been used.\nWelcome to join me reviewing!\n\nby Tecco</string>
 </resources>
