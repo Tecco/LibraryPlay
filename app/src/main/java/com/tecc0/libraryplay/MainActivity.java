@@ -27,12 +27,6 @@ import static butterknife.ButterKnife.findById;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    @OnClick(R.id.fab)
-    void fabClicked (View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-    }
-
     @Bind(R.id.nav_view) NavigationView navigationView;
 
     @Override
@@ -116,7 +110,7 @@ public class MainActivity extends AppCompatActivity
 
     private void initFragment() {
         final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        //ft.setCustomAnimations(R.anim.fragment_fade_enter, R.anim.fragment_fade_exit);
+        ft.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit);
         ft.replace(R.id.content_view, HomeFragment.newInstance(), HomeFragment.newInstance().getClass().getSimpleName());
         ft.addToBackStack(null);
         ft.commit();
@@ -124,9 +118,15 @@ public class MainActivity extends AppCompatActivity
 
     private void replaceFragment(Fragment fragment) {
         final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        //ft.setCustomAnimations(R.anim.fragment_fade_enter, R.anim.fragment_fade_exit);
+        ft.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit);
         ft.replace(R.id.content_view, fragment, fragment.getClass().getSimpleName());
         ft.addToBackStack(null);
         ft.commit();
+    }
+
+    @OnClick(R.id.fab)
+    void fabClicked (View view) {
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 }
