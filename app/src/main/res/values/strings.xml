@@ -13,6 +13,13 @@
     <string name="drawer_share">Share</string>
     <string name="drawer_about">About</string>
 
-    <string name="home_fragment_title">Home fragment</string>
+    <string name="home_fragment_title">Study Libraries</string>
     <string name="about_fragment_title">This App is Test App.\nI wanna study libraries I haven\'t been used.\nWelcome to join me reviewing!\n\nby Tecco</string>
+
+    <string-array name="study_libraries_name">
+        <item>Dagger2</item>
+        <item>Retrofit</item>
+        <item>RxJava</item>
+        <item>RxAndroid</item>
+    </string-array>
 </resources>
