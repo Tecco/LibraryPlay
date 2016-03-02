@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">LibraryPlay</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="drawer_home">Home</string>
+    <string name="drawer_gallery">Gallery</string>
+    <string name="drawer_recycler">Recycler</string>
+    <string name="drawer_tools">Tools</string>
+    <string name="drawer_share">Share</string>
+    <string name="drawer_about">About</string>
+
+    <string name="home_fragment_title">Home fragment</string>
+    <string name="about_fragment_title">About fragment</string>
+</resources>
