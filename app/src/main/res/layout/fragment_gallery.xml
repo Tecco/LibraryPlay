@@ -5,7 +5,7 @@
     tools:context="com.tecc0.libraryplay.fragment.AboutFragment">
 
 
-    <GridLayout
+    <GridView
         android:id="@+id/gallery_gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

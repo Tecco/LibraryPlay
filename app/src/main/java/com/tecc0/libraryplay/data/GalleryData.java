@@ -5,20 +5,20 @@ package com.tecc0.libraryplay.data;
  */
 public class GalleryData {
 
-    private String id;
+    private String imageId;
     private String date;
     private String link;
     private String userName;
 
-    public GalleryData(String id, String date, String link, String userName) {
-        this.id = id;
+    public GalleryData(String imageId, String date, String link, String userName) {
+        this.imageId = imageId;
         this.date = date;
         this.link = link;
         this.userName = userName;
     }
 
-    public String getId() {
-        return id;
+    public String getImageId() {
+        return imageId;
     }
 
     public String getDate() {
@@ -33,8 +33,8 @@ public class GalleryData {
         return userName;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     public void setDate(String date) {

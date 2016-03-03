@@ -20,14 +20,14 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
 
     private LayoutInflater inflater;
     private int id;
-    private ArrayList<GalleryData> data;
+    private ArrayList<GalleryData> itemData;
 
     public GalleryAdapter(Context context, int id , ArrayList<GalleryData> data) {
-        super(context, id, data);
+        super(context, 0, data);
 
-        this.id = id;
-        this.data = data;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.id = id;
+        this.itemData = data;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
             convertView = inflater.inflate(id, parent, false);
             h = new ViewHolder();
             // TODO: fix api & name
-            h.imageId = (TextView) convertView.findViewById(R.id.gallery_item_user_name_textView);
+            h.userName = (TextView) convertView.findViewById(R.id.gallery_item_user_name_textView);
             h.galleryImage = (ImageView) convertView.findViewById(R.id.gallery_item_image_view);
             h.createdDate = (TextView) convertView.findViewById(R.id.gallery_item_created_date_textView);
             convertView.setTag(h);
@@ -48,7 +48,7 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
 
         GalleryData i = getItem(position);
 
-        h.imageId.setText(i.getId());
+        h.userName.setText(i.getUserName());
         h.createdDate.setText(i.getDate());
         Picasso.with(getContext()).load(i.getLink()).into(h.galleryImage);
 
@@ -56,7 +56,7 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
     }
 
     private class ViewHolder {
-        private TextView imageId;
+        private TextView userName;
         private ImageView galleryImage;
         private TextView createdDate;
     }

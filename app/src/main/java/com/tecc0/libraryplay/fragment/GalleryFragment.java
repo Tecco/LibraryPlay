@@ -17,8 +17,7 @@ import com.tecc0.libraryplay.data.GalleryData;
 import java.util.ArrayList;
 
 import butterknife.Bind;
-
-import static butterknife.ButterKnife.findById;
+import butterknife.ButterKnife;
 
 public class GalleryFragment extends Fragment {
 
@@ -38,13 +37,25 @@ public class GalleryFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
+        ButterKnife.bind(this, view);
+
         // TODO: from API
-        //ArrayList<GalleryData> gallerydata =
+        ArrayList<GalleryData> gallerydata = new ArrayList<>();
+        gallerydata.add(new GalleryData("http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg"));
+        gallerydata.add(new GalleryData("http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg"));
+
         // TODO: item layout
-        //ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getContext(), R.layout.item, itemDataList);
+        ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, gallerydata);
         // TODO: setAdapter
+        gridView.setAdapter(adapter);
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
 }
