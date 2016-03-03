@@ -6,10 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ListView;
 
-import com.squareup.picasso.Picasso;
 import com.tecc0.libraryplay.R;
 import com.tecc0.libraryplay.data.GalleryAdapter;
 import com.tecc0.libraryplay.data.GalleryData;
@@ -21,7 +19,7 @@ import butterknife.ButterKnife;
 
 public class GalleryFragment extends Fragment {
 
-    @Bind(R.id.gallery_gridview) GridView gridView;
+    @Bind(R.id.gallery_listview) ListView gridView;
 
     public GalleryFragment() {
 
