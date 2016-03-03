@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import com.tecc0.libraryplay.fragment.AboutFragment;
 import com.tecc0.libraryplay.fragment.GalleryFragment;
 import com.tecc0.libraryplay.fragment.HomeFragment;
+import com.tecc0.libraryplay.fragment.RetrofitFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity
                 replaceFragment(GalleryFragment.newInstance());
                 break;
             case R.id.nav_recycler:
+                replaceFragment(RetrofitFragment.newInstance());
                 break;
             case R.id.nav_tools:
                 break;

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tecc0.libraryplay.R;
+import com.tecc0.libraryplay.api.WeatherApi;
 import com.tecc0.libraryplay.data.GalleryAdapter;
 import com.tecc0.libraryplay.data.GalleryData;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import retrofit2.Retrofit;
 
 public class GalleryFragment extends Fragment {
 
@@ -54,4 +56,5 @@ public class GalleryFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
+    
 }
