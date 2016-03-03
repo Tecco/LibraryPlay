@@ -35,7 +35,6 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
         if (convertView == null) {
             convertView = inflater.inflate(id, parent, false);
             h = new ViewHolder();
-            // TODO: fix api & name
             h.imageId = (TextView) convertView.findViewById(R.id.gallery_item_id_textView);
             h.userName = (TextView) convertView.findViewById(R.id.gallery_item_user_name_textView);
             h.galleryImage = (ImageView) convertView.findViewById(R.id.gallery_item_image_view);
@@ -50,7 +49,10 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
         h.imageId.setText(String.valueOf(i.getImageId()));
         h.userName.setText(i.getUserName());
         h.createdDate.setText(i.getDate());
-        Picasso.with(getContext()).load(i.getLink()).into(h.galleryImage);
+        Picasso.with(getContext()).load(i.getLink())
+                .placeholder(R.drawable.ic_menu_camera)
+                .error(R.drawable.ic_menu_camera)
+                .into(h.galleryImage);
 
         return convertView;
     }
