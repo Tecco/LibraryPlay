@@ -41,12 +41,10 @@ public class GalleryFragment extends Fragment {
 
         // TODO: from API
         ArrayList<GalleryData> gallerydata = new ArrayList<>();
-        gallerydata.add(new GalleryData("http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg"));
-        gallerydata.add(new GalleryData("http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg","http://stat001.ameba.jp/user_images/20120524/15/wazameba/1c/5c/j/o0800080011990667485.jpg"));
+        gallerydata.add(new GalleryData(1,"2015-01-01","http://tecc0.com/images/portfolio/android/tamagoya.png","nobita"));
+        gallerydata.add(new GalleryData(2,"2015-01-02","http://tecc0.com/images/portfolio/android/tamagoya.png","shizuka"));
 
-        // TODO: item layout
         ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, gallerydata);
-        // TODO: setAdapter
         gridView.setAdapter(adapter);
 
         return view;
