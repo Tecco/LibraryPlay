@@ -37,10 +37,10 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
         if (convertView == null) {
             convertView = inflater.inflate(id, parent, false);
             h = new ViewHolder();
-            // TODO: create item layout
-            //h.imageId = (TextView) convertView.findViewById(R.id.name);
-            //h.galleryImage = (TextView) convertView.findViewById(R.id.likes);
-            //h.createdDate = (TextView) convertView.findViewById(R.id.comments);
+            // TODO: fix api & name
+            h.imageId = (TextView) convertView.findViewById(R.id.gallery_item_user_name_textView);
+            h.galleryImage = (ImageView) convertView.findViewById(R.id.gallery_item_image_view);
+            h.createdDate = (TextView) convertView.findViewById(R.id.gallery_item_created_date_textView);
             convertView.setTag(h);
         } else {
             h = (ViewHolder) convertView.getTag();
