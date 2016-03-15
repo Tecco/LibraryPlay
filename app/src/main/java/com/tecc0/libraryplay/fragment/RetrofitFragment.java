@@ -70,7 +70,7 @@ public class RetrofitFragment extends Fragment {
                 .build();
 
         // 非同期処理の実行
-        adapter.create(WeatherApi.class).get("weather", "Tokyo,jp")
+        adapter.create(WeatherApi.class).get("weather", "957cf0f0d7a9310682ba9197463f2c91", "Tokyo,jp")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<WeatherEntity>() {
