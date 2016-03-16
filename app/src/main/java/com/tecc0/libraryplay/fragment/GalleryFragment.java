@@ -112,7 +112,7 @@ public class GalleryFragment extends Fragment {
 
                             for (int i = 0; i < 10; i++) {
                                 FlickrEntity.Photo p = flickr.photos.photo.get(i);
-                                gallerydata.add(new GalleryData(1, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
+                                gallerydata.add(new GalleryData(i, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
                             }
 
                             ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, gallerydata);
