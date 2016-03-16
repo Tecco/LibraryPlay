@@ -13,6 +13,9 @@ import com.tecc0.libraryplay.R;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by makoto.nishimoto on 2016/03/03.
  */
@@ -28,17 +31,24 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
         this.id = id;
     }
 
+    class ViewHolder {
+        @Bind(R.id.gallery_item_id_textView) TextView imageId;
+        @Bind(R.id.gallery_item_user_name_textView) TextView userName;
+        @Bind(R.id.gallery_item_image_view) ImageView galleryImage;
+        @Bind(R.id.gallery_item_created_date_textView) TextView createdDate;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder h;
 
         if (convertView == null) {
             convertView = inflater.inflate(id, parent, false);
-            h = new ViewHolder();
-            h.imageId = (TextView) convertView.findViewById(R.id.gallery_item_id_textView);
-            h.userName = (TextView) convertView.findViewById(R.id.gallery_item_user_name_textView);
-            h.galleryImage = (ImageView) convertView.findViewById(R.id.gallery_item_image_view);
-            h.createdDate = (TextView) convertView.findViewById(R.id.gallery_item_created_date_textView);
+            h = new ViewHolder(convertView);
             convertView.setTag(h);
         } else {
             h = (ViewHolder) convertView.getTag();
@@ -55,13 +65,6 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
                 .into(h.galleryImage);
 
         return convertView;
-    }
-
-    private class ViewHolder {
-        private TextView imageId;
-        private TextView userName;
-        private ImageView galleryImage;
-        private TextView createdDate;
     }
 
 }
