@@ -33,19 +33,4 @@ public class GalleryData {
         return userName;
     }
 
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 }
