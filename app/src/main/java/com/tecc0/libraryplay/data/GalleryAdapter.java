@@ -56,7 +56,7 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
 
         GalleryData i = getItem(position);
 
-        h.imageId.setText(String.valueOf(i.getImageId()));
+        h.imageId.setText(String.valueOf("[" + String.valueOf(i.getImageId()) + "]"));
         h.userName.setText(i.getUserName());
         h.createdDate.setText(i.getDate());
         Picasso.with(getContext()).load(i.getLink())
