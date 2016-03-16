@@ -110,7 +110,9 @@ public class GalleryFragment extends Fragment {
 
                             ArrayList<GalleryData> gallerydata = new ArrayList<>();
 
-                            for (int i = 0; i < 100; i++) {
+                            FlickrEntity.Photos info = flickr.photos;
+                            gallerydata.add(new GalleryData(0, " total:" + info.total, null, " pages:" + info.pages));
+                            for (int i = 1; i < 100; i++) {
                                 FlickrEntity.Photo p = flickr.photos.photo.get(i);
                                 gallerydata.add(new GalleryData(i, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
                             }
