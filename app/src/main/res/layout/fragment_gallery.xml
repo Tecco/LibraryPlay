@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.tecc0.libraryplay.fragment.AboutFragment">
 
-    <TextView
-        android:id="@+id/gallery_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top" />
-
     <ListView
         android:id="@+id/gallery_listview"
         android:layout_width="match_parent"

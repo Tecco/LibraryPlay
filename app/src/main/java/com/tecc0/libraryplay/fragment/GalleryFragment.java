@@ -22,6 +22,7 @@ import com.tecc0.libraryplay.data.GalleryData;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Formatter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -105,13 +106,14 @@ public class GalleryFragment extends Fragment {
                     @Override
                     public void onNext(FlickrEntity flickr) {
                         if (flickr != null) {
-                            //((TextView) v.findViewById(R.id.gallery_textview)).setText(flickr.photos.photo.get(0).title);
                             // TODO: from API
-                            FlickrEntity.Photo p = flickr.photos.photo.get(0);
+
                             ArrayList<GalleryData> gallerydata = new ArrayList<>();
-                            Log.d("aaaa", "http://flickr.com/photo.gne?id=" + p.id);
-                            gallerydata.add(new GalleryData(1, "2015-01-01", "http://flickr.com/photo.gne?id=" + flickr.photos.photo.get(0).id,"nobita"));
-                            gallerydata.add(new GalleryData(2, "2015-01-02", "http://c2.staticflickr.com/" + p.farm + "/" + p.server + "/" + p.id + "_" + p.secret + ".jpg", "shizuka"));
+
+                            for (int i = 0; i < 10; i++) {
+                                FlickrEntity.Photo p = flickr.photos.photo.get(i);
+                                gallerydata.add(new GalleryData(1, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
+                            }
 
                             ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, gallerydata);
                             gridView.setAdapter(adapter);
