@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.FieldNamingPolicy;
@@ -17,13 +15,9 @@ import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tecc0.libraryplay.R;
 import com.tecc0.libraryplay.api.WeatherApi;
 import com.tecc0.libraryplay.api.WeatherEntity;
-import com.tecc0.libraryplay.data.GalleryAdapter;
-import com.tecc0.libraryplay.data.GalleryData;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -34,6 +28,7 @@ import rx.schedulers.Schedulers;
 
 public class RetrofitFragment extends Fragment {
 
+    private static String API_KEY = "957cf0f0d7a9310682ba9197463f2c91";
     public RetrofitFragment() {
 
     }
@@ -50,13 +45,12 @@ public class RetrofitFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_retrofit, container, false);
         ButterKnife.bind(this, view);
 
-        // TODO: from API
-        tryRetrofit(view);
+        getWeatherApi(view);
 
         return view;
     }
 
-    private void tryRetrofit(final View v) {// JSONのパーサー
+    private void getWeatherApi(final View v) {// JSONのパーサー
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(Date.class, new DateTypeAdapter())
@@ -70,7 +64,7 @@ public class RetrofitFragment extends Fragment {
                 .build();
 
         // 非同期処理の実行
-        adapter.create(WeatherApi.class).get("weather", "957cf0f0d7a9310682ba9197463f2c91", "Tokyo,jp")
+        adapter.create(WeatherApi.class).get("weather", API_KEY, "Tokyo,jp")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<WeatherEntity>() {
