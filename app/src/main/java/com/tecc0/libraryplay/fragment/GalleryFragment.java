@@ -56,14 +56,6 @@ public class GalleryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
         ButterKnife.bind(this, view);
 
-        // TODO: from API
-        ArrayList<GalleryData> gallerydata = new ArrayList<>();
-        gallerydata.add(new GalleryData(1,"2015-01-01","http://tecc0.com/sozai/wp-content/uploads/2015/04/road3_S-640x360.jpg","nobita"));
-        gallerydata.add(new GalleryData(2,"2015-01-02","http://tecc0.com/sozai/wp-content/uploads/2015/04/road4_S-640x360.jpg","shizuka"));
-
-        ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, gallerydata);
-        //gridView.setAdapter(adapter);
-
         getFlickrApi(view);
 
         return view;
@@ -113,7 +105,16 @@ public class GalleryFragment extends Fragment {
                     @Override
                     public void onNext(FlickrEntity flickr) {
                         if (flickr != null) {
-                            ((TextView) v.findViewById(R.id.gallery_textview)).setText(flickr.photos.photo.get(0).title);
+                            //((TextView) v.findViewById(R.id.gallery_textview)).setText(flickr.photos.photo.get(0).title);
+                            // TODO: from API
+                            FlickrEntity.Photo p = flickr.photos.photo.get(0);
+                            ArrayList<GalleryData> gallerydata = new ArrayList<>();
+                            Log.d("aaaa", "http://flickr.com/photo.gne?id=" + p.id);
+                            gallerydata.add(new GalleryData(1, "2015-01-01", "http://flickr.com/photo.gne?id=" + flickr.photos.photo.get(0).id,"nobita"));
+                            gallerydata.add(new GalleryData(2, "2015-01-02", "http://c2.staticflickr.com/" + p.farm + "/" + p.server + "/" + p.id + "_" + p.secret + ".jpg", "shizuka"));
+
+                            ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, gallerydata);
+                            gridView.setAdapter(adapter);
                         }
                     }
                 });

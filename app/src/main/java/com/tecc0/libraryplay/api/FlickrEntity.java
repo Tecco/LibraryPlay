@@ -24,5 +24,8 @@ public class FlickrEntity {
         public String id;
         public String owner;
         public String title;
+        public String farm;
+        public String server;
+        public String secret;
     }
 }
