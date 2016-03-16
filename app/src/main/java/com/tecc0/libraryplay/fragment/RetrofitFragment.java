@@ -19,6 +19,8 @@ import com.tecc0.libraryplay.api.WeatherEntity;
 import java.util.Date;
 
 import butterknife.ButterKnife;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -56,9 +58,15 @@ public class RetrofitFragment extends Fragment {
                 .registerTypeAdapter(Date.class, new DateTypeAdapter())
                 .create();
 
+        // add log
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
         // RestAdapterの生成
         Retrofit adapter = new Retrofit.Builder()
                 .baseUrl("http://api.openweathermap.org")
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

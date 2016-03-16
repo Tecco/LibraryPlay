@@ -10,7 +10,7 @@ public class WeatherEntity {
     public List<Weather> weather;
 
     public class Weather {
-        public int id;
+        public String  id;
         public String main;
         public String description;
         public String icon;
