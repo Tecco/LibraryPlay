@@ -10,6 +10,7 @@
     <string name="drawer_gallery">Picasso</string>
     <string name="drawer_recycler">Retrofit</string>
     <string name="drawer_tools">Tools</string>
+    <string name="drawer_toor">Toor</string>
     <string name="drawer_share">Share</string>
     <string name="drawer_about">About</string>
 
@@ -24,5 +25,6 @@
         <item>RxAndroid</item>
         <item>OkHttp</item>
         <item>Gson</item>
+        <item>AppTour</item>
     </string-array>
 </resources>

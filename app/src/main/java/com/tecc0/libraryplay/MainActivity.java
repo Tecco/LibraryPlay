@@ -1,5 +1,6 @@
 package com.tecc0.libraryplay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Bind(R.id.nav_view) NavigationView navigationView;
+    @Bind(R.id.drawer_layout) DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -86,6 +87,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_tools:
                 break;
+            case R.id.nav_toor:
+                startActivity(new Intent(this, TourActivity.class));
+                break;
             case R.id.nav_share:
                 break;
             case R.id.nav_about:
@@ -98,6 +102,12 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findById(this, R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @OnClick(R.id.fab)
+    void fabClicked (View view) {
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 
     private void initToolbar () {
@@ -123,11 +133,5 @@ public class MainActivity extends AppCompatActivity
         ft.replace(R.id.content_view, fragment, fragment.getClass().getSimpleName());
         ft.addToBackStack(null);
         ft.commit();
-    }
-
-    @OnClick(R.id.fab)
-    void fabClicked (View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
     }
 }
