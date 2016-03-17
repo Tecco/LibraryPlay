@@ -55,13 +55,13 @@ public class WeatherAdapter extends ArrayAdapter<WeatherData> {
             h = (ViewHolder) convertView.getTag();
         }
 
-        WeatherData i = getItem(position);
+        WeatherData weatherData = getItem(position);
 
-        h.max.setText(" max:" + i.getMax());
-        h.min.setText(" min:" + i.getMin());
-        h.weather.setText(" weather:" + i.getWeather());
+        h.max.setText(" max:" + weatherData.getMax());
+        h.min.setText(" min:" + weatherData.getMin());
+        h.weather.setText(" weather:" + weatherData.getWeather());
 
-        Picasso.with(getContext()).load("http://openweathermap.org/img/w/" + i.getIconId() + ".png")
+        Picasso.with(getContext()).load("http://openweathermap.org/img/w/" + weatherData.getIconId() + ".png")
                 .placeholder(R.drawable.progress_animation)
                 .error(R.drawable.progress_animation)
                 .into(h.weatherImage);

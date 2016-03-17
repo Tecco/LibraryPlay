@@ -54,12 +54,12 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
             h = (ViewHolder) convertView.getTag();
         }
 
-        GalleryData i = getItem(position);
+        GalleryData galleryData = getItem(position);
 
-        h.imageId.setText(String.valueOf("[" + String.valueOf(i.getImageId()) + "]"));
-        h.userName.setText(i.getUserName());
-        h.createdDate.setText(i.getDate());
-        Picasso.with(getContext()).load(i.getLink())
+        h.imageId.setText(String.valueOf("[" + String.valueOf(galleryData.getImageId()) + "]"));
+        h.userName.setText(galleryData.getUserName());
+        h.createdDate.setText(galleryData.getDate());
+        Picasso.with(getContext()).load(galleryData.getLink())
                 .placeholder(R.drawable.progress_animation)
                 .error(R.drawable.progress_animation)
                 .into(h.galleryImage);
