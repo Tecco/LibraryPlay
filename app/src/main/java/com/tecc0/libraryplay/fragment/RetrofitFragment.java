@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tecc0.libraryplay.R;
+import com.tecc0.libraryplay.api.DayWeather;
 import com.tecc0.libraryplay.api.WeatherApi;
 import com.tecc0.libraryplay.api.Weather;
 import com.tecc0.libraryplay.data.WeatherAdapter;
@@ -102,7 +103,7 @@ public class RetrofitFragment extends Fragment {
 
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(weather.city.name + " : " + weather.city.country);
                             for (int i = 0; i < 16; i++) {
-                                Weather.DayWeather w = weather.list.get(i);
+                                DayWeather w = weather.dayWeatherList.get(i);
                                 weatherList.add(new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main));
                             }
 

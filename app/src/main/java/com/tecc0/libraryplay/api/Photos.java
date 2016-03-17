@@ -7,9 +7,10 @@ import java.util.List;
 /**
  * Created by makoto.nishimoto on 2016/03/03.
  */
-public class Flickr {
+public class Photos {
+    public String  page;
+    public String pages;
+    public String total;
 
-    @SerializedName("photos")
-    public Photos photos;
-
+    public List<Photo> photo;
 }

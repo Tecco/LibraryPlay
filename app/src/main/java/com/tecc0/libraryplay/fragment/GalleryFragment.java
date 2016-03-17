@@ -17,6 +17,8 @@ import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tecc0.libraryplay.R;
 import com.tecc0.libraryplay.api.FlickrApi;
 import com.tecc0.libraryplay.api.Flickr;
+import com.tecc0.libraryplay.api.Photo;
+import com.tecc0.libraryplay.api.Photos;
 import com.tecc0.libraryplay.data.GalleryAdapter;
 import com.tecc0.libraryplay.data.GalleryData;
 
@@ -108,10 +110,10 @@ public class GalleryFragment extends Fragment {
                         if (flickr != null) {
                             ArrayList<GalleryData> galleryLust = new ArrayList<>();
 
-                            Flickr.Photos info = flickr.photos;
+                            Photos info = flickr.photos;
                             galleryLust.add(new GalleryData(0, " total:" + info.total, null, " pages:" + info.pages));
                             for (int i = 1; i < 100; i++) {
-                                Flickr.Photo p = flickr.photos.photo.get(i);
+                                Photo p = flickr.photos.photo.get(i);
                                 galleryLust.add(new GalleryData(i, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
                             }
 
