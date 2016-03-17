@@ -9,16 +9,6 @@ import java.util.List;
  * Created by makoto.nishimoto on 2016/03/03.
  */
 public class WeatherEntity {
-//    public String base;
-//    public String city;
-//    public List<Weather> weather;
-//
-//    public class Weather {
-//        public String  id;
-//        public String main;
-//        public String description;
-//        public String icon;
-//    }
 
     @SerializedName("city")
     public City city;
