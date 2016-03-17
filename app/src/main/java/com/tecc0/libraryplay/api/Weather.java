@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by makoto.nishimoto on 2016/03/03.
  */
-public class WeatherEntity {
+public class Weather {
 
     @SerializedName("city")
     public City city;
@@ -24,14 +24,15 @@ public class WeatherEntity {
 
     public class DayWeather {
         public int dt;
-        public ArrayList<Weather> weather;
+        public ArrayList<Forecast> weather;
         public Temp temp;
     }
 
-    public class Weather {
+    public class Forecast {
         public String main;
         public String icon;
     }
+
     public class Temp {
         public float min;
         public float max;

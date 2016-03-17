@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by makoto.nishimoto on 2016/03/03.
  */
-public class FlickrEntity {
+public class Flickr {
 
     @SerializedName("photos")
     public Photos photos;

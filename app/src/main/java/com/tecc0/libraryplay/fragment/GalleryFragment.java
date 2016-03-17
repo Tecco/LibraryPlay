@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -17,13 +16,12 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tecc0.libraryplay.R;
 import com.tecc0.libraryplay.api.FlickrApi;
-import com.tecc0.libraryplay.api.FlickrEntity;
+import com.tecc0.libraryplay.api.Flickr;
 import com.tecc0.libraryplay.data.GalleryAdapter;
 import com.tecc0.libraryplay.data.GalleryData;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Formatter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -94,7 +92,7 @@ public class GalleryFragment extends Fragment {
         adapter.create(FlickrApi.class).get(FLICKR_API_KEY, "flickr.photos.search", "cat", "json", 1)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<FlickrEntity>() {
+                .subscribe(new Observer<Flickr>() {
                     @Override
                     public void onCompleted() {
                         Log.d("MainActivity", "onCompleted()");
@@ -106,14 +104,14 @@ public class GalleryFragment extends Fragment {
                     }
 
                     @Override
-                    public void onNext(FlickrEntity flickr) {
+                    public void onNext(Flickr flickr) {
                         if (flickr != null) {
                             ArrayList<GalleryData> galleryLust = new ArrayList<>();
 
-                            FlickrEntity.Photos info = flickr.photos;
+                            Flickr.Photos info = flickr.photos;
                             galleryLust.add(new GalleryData(0, " total:" + info.total, null, " pages:" + info.pages));
                             for (int i = 1; i < 100; i++) {
-                                FlickrEntity.Photo p = flickr.photos.photo.get(i);
+                                Flickr.Photo p = flickr.photos.photo.get(i);
                                 galleryLust.add(new GalleryData(i, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
                             }
 

@@ -5,13 +5,12 @@ package com.tecc0.libraryplay.api;
  */
 
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
 public interface FlickrApi {
 
     @GET("/services/rest/")
-    Observable<FlickrEntity> get(@Query("api_key") String apiKey, @Query("method") String method, @Query("text") String word, @Query("format") String format, @Query("nojsoncallback") int num);
+    Observable<Flickr> get(@Query("api_key") String apiKey, @Query("method") String method, @Query("text") String word, @Query("format") String format, @Query("nojsoncallback") int num);
 
 }

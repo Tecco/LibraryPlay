@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -17,7 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tecc0.libraryplay.R;
 import com.tecc0.libraryplay.api.WeatherApi;
-import com.tecc0.libraryplay.api.WeatherEntity;
+import com.tecc0.libraryplay.api.Weather;
 import com.tecc0.libraryplay.data.WeatherAdapter;
 import com.tecc0.libraryplay.data.WeatherData;
 
@@ -85,7 +84,7 @@ public class RetrofitFragment extends Fragment {
         adapter.create(WeatherApi.class).get("daily", API_KEY, "TOKYO", 16)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<WeatherEntity>() {
+                .subscribe(new Observer<Weather>() {
                     @Override
                     public void onCompleted() {
                         Log.d("MainActivity", "onCompleted()");
@@ -97,13 +96,13 @@ public class RetrofitFragment extends Fragment {
                     }
 
                     @Override
-                    public void onNext(WeatherEntity weather) {
+                    public void onNext(Weather weather) {
                         if (weather != null) {
                             ArrayList<WeatherData> weatherList = new ArrayList<>();
 
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(weather.city.name + " : " + weather.city.country);
                             for (int i = 0; i < 16; i++) {
-                                WeatherEntity.DayWeather w = weather.list.get(i);
+                                Weather.DayWeather w = weather.list.get(i);
                                 weatherList.add(new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main));
                             }
 
