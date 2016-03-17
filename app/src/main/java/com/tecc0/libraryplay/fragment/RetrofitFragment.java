@@ -2,10 +2,13 @@ package com.tecc0.libraryplay.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.FieldNamingPolicy;
@@ -15,9 +18,13 @@ import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tecc0.libraryplay.R;
 import com.tecc0.libraryplay.api.WeatherApi;
 import com.tecc0.libraryplay.api.WeatherEntity;
+import com.tecc0.libraryplay.data.WeatherAdapter;
+import com.tecc0.libraryplay.data.WeatherData;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -29,6 +36,8 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class RetrofitFragment extends Fragment {
+
+    @Bind(R.id.retrofit_listview) ListView listView;
 
     private static String API_KEY = "957cf0f0d7a9310682ba9197463f2c91";
     public RetrofitFragment() {
@@ -72,7 +81,7 @@ public class RetrofitFragment extends Fragment {
                 .build();
 
         // 非同期処理の実行
-        adapter.create(WeatherApi.class).get("weather", API_KEY, "Tokyo,jp")
+        adapter.create(WeatherApi.class).get("daily", API_KEY, "TOKYO", 16)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<WeatherEntity>() {
@@ -89,7 +98,16 @@ public class RetrofitFragment extends Fragment {
                     @Override
                     public void onNext(WeatherEntity weather) {
                         if (weather != null) {
-                            ((TextView) v.findViewById(R.id.retrofit_textview)).setText(weather.weather.get(0).main);
+                            ArrayList<WeatherData> weatherList = new ArrayList<>();
+
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(weather.city.name + " : " + weather.city.country);
+                            for (int i = 0; i < 16; i++) {
+                                WeatherEntity.DayWeather w = weather.list.get(i);
+                                weatherList.add(new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main));
+                            }
+
+                            ArrayAdapter<WeatherData> adapter = new WeatherAdapter(getActivity(), R.layout.weather_item, weatherList);
+                            listView.setAdapter(adapter);
                         }
                     }
                 });

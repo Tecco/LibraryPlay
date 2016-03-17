@@ -106,18 +106,16 @@ public class GalleryFragment extends Fragment {
                     @Override
                     public void onNext(FlickrEntity flickr) {
                         if (flickr != null) {
-                            // TODO: from API
-
-                            ArrayList<GalleryData> gallerydata = new ArrayList<>();
+                            ArrayList<GalleryData> galleryLust = new ArrayList<>();
 
                             FlickrEntity.Photos info = flickr.photos;
-                            gallerydata.add(new GalleryData(0, " total:" + info.total, null, " pages:" + info.pages));
+                            galleryLust.add(new GalleryData(0, " total:" + info.total, null, " pages:" + info.pages));
                             for (int i = 1; i < 100; i++) {
                                 FlickrEntity.Photo p = flickr.photos.photo.get(i);
-                                gallerydata.add(new GalleryData(i, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
+                                galleryLust.add(new GalleryData(i, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
                             }
 
-                            ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, gallerydata);
+                            ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, galleryLust);
                             gridView.setAdapter(adapter);
                         }
                     }
