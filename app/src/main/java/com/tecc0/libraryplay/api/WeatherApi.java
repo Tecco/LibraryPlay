@@ -12,6 +12,6 @@ import rx.Observable;
 public interface WeatherApi {
 
     @GET("/data/2.5/forecast/{name}")
-    Observable<Weather> get(@Path("name") String name, @Query("appid") String id, @Query("q") String q, @Query("cnt") int count);
+    Observable<Weather> getWeather(@Path("name") String name, @Query("appid") String id, @Query("q") String q, @Query("cnt") int count);
 
 }

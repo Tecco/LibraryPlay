@@ -91,7 +91,7 @@ public class GalleryFragment extends Fragment {
                 .build();
 
         // 非同期処理の実行
-        adapter.create(FlickrApi.class).get(FLICKR_API_KEY, "flickr.photos.search", "cat", "json", 1)
+        adapter.create(FlickrApi.class).getFlickr(FLICKR_API_KEY, "flickr.photos.search", "cat", "json", 1)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Flickr>() {

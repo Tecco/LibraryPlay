@@ -11,6 +11,6 @@ import rx.Observable;
 public interface FlickrApi {
 
     @GET("/services/rest/")
-    Observable<Flickr> get(@Query("api_key") String apiKey, @Query("method") String method, @Query("text") String word, @Query("format") String format, @Query("nojsoncallback") int num);
+    Observable<Flickr> getFlickr(@Query("api_key") String apiKey, @Query("method") String method, @Query("text") String word, @Query("format") String format, @Query("nojsoncallback") int num);
 
 }
