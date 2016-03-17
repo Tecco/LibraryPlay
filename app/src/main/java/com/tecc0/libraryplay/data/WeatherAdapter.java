@@ -62,8 +62,8 @@ public class WeatherAdapter extends ArrayAdapter<WeatherData> {
         h.weather.setText(" weather:" + i.getWeather());
 
         Picasso.with(getContext()).load("http://openweathermap.org/img/w/" + i.getIconId() + ".png")
-                .placeholder(R.drawable.ic_menu_camera)
-                .error(R.drawable.ic_menu_camera)
+                .placeholder(R.drawable.progress_animation)
+                .error(R.drawable.progress_animation)
                 .into(h.weatherImage);
 
         return convertView;

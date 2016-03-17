@@ -60,8 +60,8 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
         h.userName.setText(i.getUserName());
         h.createdDate.setText(i.getDate());
         Picasso.with(getContext()).load(i.getLink())
-                .placeholder(R.drawable.ic_menu_camera)
-                .error(R.drawable.ic_menu_camera)
+                .placeholder(R.drawable.progress_animation)
+                .error(R.drawable.progress_animation)
                 .into(h.galleryImage);
 
         return convertView;
