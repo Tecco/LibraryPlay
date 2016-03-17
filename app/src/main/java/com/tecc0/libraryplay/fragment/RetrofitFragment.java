@@ -56,6 +56,7 @@ public class RetrofitFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_retrofit, container, false);
         ButterKnife.bind(this, view);
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Retrofit");
         getWeatherApi(view);
 
         return view;

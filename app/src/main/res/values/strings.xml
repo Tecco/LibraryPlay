@@ -17,9 +17,12 @@
     <string name="about_fragment_title">This App is Test App.\nI wanna study libraries I haven\'t been used.\nWelcome to join me reviewing!\n\nby Tecco</string>
 
     <string-array name="study_libraries_name">
+        <item>Picasso</item>
         <item>Dagger2</item>
         <item>Retrofit</item>
         <item>RxJava</item>
         <item>RxAndroid</item>
+        <item>OkHttp</item>
+        <item>Gson</item>
     </string-array>
 </resources>
