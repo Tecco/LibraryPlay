@@ -77,13 +77,13 @@ public class MainActivity extends AppCompatActivity
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-                replaceFragment(HomeFragment.newInstance());
+                replaceFragment(HomeFragment.create());
                 break;
             case R.id.nav_gallery:
-                replaceFragment(GalleryFragment.newInstance());
+                replaceFragment(GalleryFragment.create());
                 break;
             case R.id.nav_recycler:
-                replaceFragment(RetrofitFragment.newInstance());
+                replaceFragment(RetrofitFragment.create());
                 break;
             case R.id.nav_tools:
                 break;
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_share:
                 break;
             case R.id.nav_about:
-                replaceFragment(AboutFragment.newInstance());
+                replaceFragment(AboutFragment.create());
                 break;
             default:
                 break;
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
 
     private void initFragment() {
         final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_view, HomeFragment.newInstance(), HomeFragment.newInstance().getClass().getSimpleName());
+        ft.replace(R.id.content_view, HomeFragment.create(), HomeFragment.create().getClass().getSimpleName());
         ft.addToBackStack(null);
         ft.commit();
     }

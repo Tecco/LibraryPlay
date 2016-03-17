@@ -44,7 +44,7 @@ public class RetrofitFragment extends Fragment {
 
     }
 
-    public static RetrofitFragment newInstance() {
+    public static RetrofitFragment create() {
         RetrofitFragment fragment = new RetrofitFragment();
         return fragment;
     }

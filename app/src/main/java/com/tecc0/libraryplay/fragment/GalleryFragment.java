@@ -46,7 +46,7 @@ public class GalleryFragment extends Fragment {
 
     }
 
-    public static GalleryFragment newInstance() {
+    public static GalleryFragment create() {
         GalleryFragment fragment = new GalleryFragment();
         return fragment;
     }
