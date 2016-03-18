@@ -122,11 +122,15 @@ public class RetrofitFragment extends Fragment {
 //                                    })
 //                                    .toList().toBlocking().single();
 //
-                            List<WeatherData> weatherList = Observable.range(0, WEATHER_API_GET_COUNT)
-                                    .map(i -> {
-                                        DayWeather w = weather.dayWeatherList.get(i);
-                                        return new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main);
-                                    })
+//                            List<WeatherData> weatherList3 = Observable.range(0, WEATHER_API_GET_COUNT)
+//                                    .map(i -> {
+//                                        DayWeather w = weather.dayWeatherList.get(i);
+//                                        return new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main);
+//                                    })
+//                                    .toList().toBlocking().single();
+//
+                            List<WeatherData> weatherList = Observable.from(weather.dayWeatherList)
+                                    .map(w -> new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main))
                                     .toList().toBlocking().single();
 
                             // Observable使わないやつ
