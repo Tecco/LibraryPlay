@@ -127,13 +127,20 @@ public class RetrofitFragment extends Fragment {
                                     })
                                     .toList().toBlocking().single();
 //
+                            List<WeatherData> weatherList3 = Observable.range(0, 15)
+                                    .map(i -> {
+                                        DayWeather w = weather.dayWeatherList.get(i);
+                                        return new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main);
+                                    })
+                                    .toList().toBlocking().single();
+
 //                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(weather.city.name + " : " + weather.city.country);
 //                            for (int i = 0; i < 16; i++) {
 //                                DayWeather w = weather.dayWeatherList.get(i);
 //                                weatherList.add(new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main));
 //                            }
 //
-                            ArrayAdapter<WeatherData> adapter = new WeatherAdapter(getActivity(), R.layout.weather_item, weatherList1);
+                            ArrayAdapter<WeatherData> adapter = new WeatherAdapter(getActivity(), R.layout.weather_item, weatherList3);
                             listView.setAdapter(adapter);
                         }
                     }
