@@ -23,6 +23,7 @@ import com.tecc0.libraryplay.data.WeatherData;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,8 +32,11 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func0;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class RetrofitFragment extends Fragment {
@@ -99,14 +103,30 @@ public class RetrofitFragment extends Fragment {
                     @Override
                     public void onNext(Weather weather) {
                         if (weather != null) {
-                            ArrayList<WeatherData> weatherList = new ArrayList<>();
 
-                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(weather.city.name + " : " + weather.city.country);
-                            for (int i = 0; i < 16; i++) {
-                                DayWeather w = weather.dayWeatherList.get(i);
-                                weatherList.add(new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main));
-                            }
+//                            ArrayList<WeatherData> weatherList = Observable.from(weather.dayWeatherList)
+//                                    .map(new Func1<DayWeather, Object>() {
+//                                        @Override
+////                                        public Integer call(Integer i) {
+////                                            sb.append("1");
+////                                            return i;
+////                                        }
+//                                    })
+//                                    .toList().toBlocking().single();
 
+                            List<WeatherData> weatherList = Observable.just(0,1,2,3,4,5,6,7,8,9)
+                                    .map(i -> {
+                                        DayWeather w = weather.dayWeatherList.get(i);
+                                        return new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main);
+                                    })
+                                    .toList().toBlocking().single();
+//
+//                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(weather.city.name + " : " + weather.city.country);
+//                            for (int i = 0; i < 16; i++) {
+//                                DayWeather w = weather.dayWeatherList.get(i);
+//                                weatherList.add(new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main));
+//                            }
+//
                             ArrayAdapter<WeatherData> adapter = new WeatherAdapter(getActivity(), R.layout.weather_item, weatherList);
                             listView.setAdapter(adapter);
                         }

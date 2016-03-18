@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import com.tecc0.libraryplay.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -25,7 +26,7 @@ public class WeatherAdapter extends ArrayAdapter<WeatherData> {
     private LayoutInflater inflater;
     private int id;
 
-    public WeatherAdapter(Context context, int id, ArrayList<WeatherData> data) {
+    public WeatherAdapter(Context context, int id, List<WeatherData> data) {
         super(context, 0, data);
 
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
