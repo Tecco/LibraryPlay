@@ -108,6 +108,8 @@ public class GalleryFragment extends Fragment {
                     public void onNext(Flickr flickr) {
                         if (flickr != null) {
 
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("total:" + flickr.photos.total + "  pages:" + flickr.photos.pages);
+
                             // Observable使わないやつ
 //                            ArrayList<GalleryData> galleryList = new ArrayList<>();
 //
