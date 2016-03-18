@@ -41,6 +41,8 @@ import rx.schedulers.Schedulers;
 
 public class RetrofitFragment extends Fragment {
 
+    private static int WEATHER_API_GET_COUNT = 15;
+
     @Bind(R.id.retrofit_listview) ListView listView;
 
     public RetrofitFragment() {
@@ -85,7 +87,7 @@ public class RetrofitFragment extends Fragment {
                 .build();
 
         // 非同期処理の実行
-        adapter.create(WeatherApi.class).getWeather("daily", getString(R.string.weather_key), "TOKYO", 16)
+        adapter.create(WeatherApi.class).getWeather("daily", getString(R.string.weather_key), "TOKYO", WEATHER_API_GET_COUNT)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Weather>() {
@@ -120,7 +122,7 @@ public class RetrofitFragment extends Fragment {
 //                                    })
 //                                    .toList().toBlocking().single();
 //
-                            List<WeatherData> weatherList = Observable.range(0, 15)
+                            List<WeatherData> weatherList = Observable.range(0, WEATHER_API_GET_COUNT)
                                     .map(i -> {
                                         DayWeather w = weather.dayWeatherList.get(i);
                                         return new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main);
