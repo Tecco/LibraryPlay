@@ -38,8 +38,6 @@ import rx.schedulers.Schedulers;
 
 public class GalleryFragment extends Fragment {
 
-    private static String FLICKR_API_KEY = "2d2e76fc5a867664d3df6fded18f9c6e";
-
     @Bind(R.id.gallery_listview) ListView gridView;
 
     public GalleryFragment() {
@@ -91,7 +89,7 @@ public class GalleryFragment extends Fragment {
                 .build();
 
         // 非同期処理の実行
-        adapter.create(FlickrApi.class).getFlickr(FLICKR_API_KEY, "flickr.photos.search", "cat", "json", 1)
+        adapter.create(FlickrApi.class).getFlickr(getString(R.string.flickr_key), "flickr.photos.search", "cat", "json", 1)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Flickr>() {

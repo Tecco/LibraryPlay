@@ -43,7 +43,6 @@ public class RetrofitFragment extends Fragment {
 
     @Bind(R.id.retrofit_listview) ListView listView;
 
-    private static String API_KEY = "957cf0f0d7a9310682ba9197463f2c91";
     public RetrofitFragment() {
 
     }
@@ -86,7 +85,7 @@ public class RetrofitFragment extends Fragment {
                 .build();
 
         // 非同期処理の実行
-        adapter.create(WeatherApi.class).getWeather("daily", API_KEY, "TOKYO", 16)
+        adapter.create(WeatherApi.class).getWeather("daily", getString(R.string.weather_key), "TOKYO", 16)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Weather>() {
