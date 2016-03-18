@@ -19,6 +19,7 @@ import com.tecc0.libraryplay.fragment.AboutFragment;
 import com.tecc0.libraryplay.fragment.GalleryFragment;
 import com.tecc0.libraryplay.fragment.HomeFragment;
 import com.tecc0.libraryplay.fragment.RetrofitFragment;
+import com.tecc0.libraryplay.fragment.ScrollingFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -89,6 +90,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_toor:
                 startActivity(new Intent(this, TourActivity.class));
+                break;
+            case R.id.nav_coordinator:
+                replaceFragment(ScrollingFragment.create());
                 break;
             case R.id.nav_share:
                 break;
