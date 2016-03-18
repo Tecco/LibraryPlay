@@ -15,15 +15,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tecc0.libraryplay.R;
-import com.tecc0.libraryplay.api.FlickrApi;
 import com.tecc0.libraryplay.api.Flickr;
-import com.tecc0.libraryplay.api.Photo;
-import com.tecc0.libraryplay.api.Photos;
+import com.tecc0.libraryplay.api.FlickrApi;
 import com.tecc0.libraryplay.data.GalleryAdapter;
 import com.tecc0.libraryplay.data.GalleryData;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,11 +30,14 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class GalleryFragment extends Fragment {
+
+    private static int num = 0;
 
     @Bind(R.id.gallery_listview) ListView gridView;
 
@@ -106,16 +107,26 @@ public class GalleryFragment extends Fragment {
                     @Override
                     public void onNext(Flickr flickr) {
                         if (flickr != null) {
-                            ArrayList<GalleryData> galleryLust = new ArrayList<>();
 
-                            Photos info = flickr.photos;
-                            galleryLust.add(new GalleryData(0, " total:" + info.total, null, " pages:" + info.pages));
-                            for (int i = 1; i < 100; i++) {
-                                Photo p = flickr.photos.photo.get(i);
-                                galleryLust.add(new GalleryData(i, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
-                            }
+                            // Observable使わないやつ
+//                            ArrayList<GalleryData> galleryList = new ArrayList<>();
+//
+//                            Photos info = flickr.photos;
+//                            galleryList.add(new GalleryData(0, " total:" + info.total, null, " pages:" + info.pages));
+//                            for (int i = 1; i < 100; i++) {
+//                                Photo p = flickr.photos.photo.get(i);
+//                                galleryList.add(new GalleryData(i, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner));
+//                            }
 
-                            ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, galleryLust);
+                            List<GalleryData> galleryList = Observable.from(flickr.photos.photo)
+                                    .map(p -> {
+                                                num++;
+                                                return new GalleryData(num, p.title, String.format("http://c2.staticflickr.com/%s/%s/%s_%s.jpg", p.farm, p.server, p.id, p.secret, p.owner), p.owner);
+                                            }
+                                    )
+                                    .toList().toBlocking().single();
+
+                            ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, galleryList);
                             gridView.setAdapter(adapter);
                         }
                     }

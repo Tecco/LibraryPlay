@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.tecc0.libraryplay.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,7 +24,7 @@ public class GalleryAdapter extends ArrayAdapter<GalleryData> {
     private LayoutInflater inflater;
     private int id;
 
-    public GalleryAdapter(Context context, int id , ArrayList<GalleryData> data) {
+    public GalleryAdapter(Context context, int id , List<GalleryData> data) {
         super(context, 0, data);
 
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
