@@ -15,13 +15,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
 import com.tecc0.libraryplay.R;
-import com.tecc0.libraryplay.api.DayWeather;
 import com.tecc0.libraryplay.api.WeatherApi;
 import com.tecc0.libraryplay.api.Weather;
 import com.tecc0.libraryplay.data.WeatherAdapter;
 import com.tecc0.libraryplay.data.WeatherData;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,8 +33,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func0;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class RetrofitFragment extends Fragment {
