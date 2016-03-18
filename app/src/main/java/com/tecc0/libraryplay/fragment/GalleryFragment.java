@@ -2,14 +2,17 @@ package com.tecc0.libraryplay.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
+import com.github.ksoichiro.android.observablescrollview.ObservableListView;
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
+import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,12 +38,12 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class GalleryFragment extends Fragment {
+public class GalleryFragment extends Fragment implements ObservableScrollViewCallbacks{
 
     // 良い方法が思いつかないです かなしい
     private static int num = 0;
 
-    @Bind(R.id.gallery_listview) ListView gridView;
+    @Bind(R.id.gallery_listview) ObservableListView listView;
 
     public GalleryFragment() {
 
@@ -60,6 +63,8 @@ public class GalleryFragment extends Fragment {
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Picasso");
         getFlickrApi(view);
+
+        listView.setScrollViewCallbacks(this);
 
         return view;
     }
@@ -130,11 +135,34 @@ public class GalleryFragment extends Fragment {
                                     .toList().toBlocking().single();
 
                             ArrayAdapter<GalleryData> adapter = new GalleryAdapter(getActivity(), R.layout.gallery_item, galleryList);
-                            gridView.setAdapter(adapter);
+                            listView.setAdapter(adapter);
                         }
                     }
                 });
 
     }
 
+    @Override
+    public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
+
+    }
+
+    @Override
+    public void onDownMotionEvent() {
+
+    }
+
+    @Override
+    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+        ActionBar ab = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        if (scrollState == ScrollState.UP) {
+            if (ab.isShowing()) {
+                ab.hide();
+            }
+        } else if (scrollState == ScrollState.DOWN) {
+            if (!ab.isShowing()) {
+                ab.show();
+            }
+        }
+    }
 }

@@ -25,6 +25,6 @@
         <item>RxAndroid</item>
         <item>OkHttp</item>
         <item>Gson</item>
-        <item>AppTour</item>
+        <item>ObservableScrollView</item>
     </string-array>
 </resources>

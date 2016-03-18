@@ -35,6 +35,18 @@ public class HomeFragment extends Fragment {
         ListView lv = findById(view, R.id.listView);
         lv.setAdapter(new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_checked, getResources().getStringArray(R.array.study_libraries_name)));
+        lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        // なんかでまとめるかも
+        lv.setItemChecked(0, true);
+        lv.setItemChecked(1, false);
+        lv.setItemChecked(2, true);
+        lv.setItemChecked(3, true);
+        lv.setItemChecked(4, true);
+        lv.setItemChecked(5, true);
+        lv.setItemChecked(6, true);
+        lv.setItemChecked(7, true);
+
         return view;
     }
 
