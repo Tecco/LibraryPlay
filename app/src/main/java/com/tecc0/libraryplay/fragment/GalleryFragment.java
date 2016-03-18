@@ -37,6 +37,7 @@ import rx.schedulers.Schedulers;
 
 public class GalleryFragment extends Fragment {
 
+    // 良い方法が思いつかないです かなしい
     private static int num = 0;
 
     @Bind(R.id.gallery_listview) ListView gridView;
