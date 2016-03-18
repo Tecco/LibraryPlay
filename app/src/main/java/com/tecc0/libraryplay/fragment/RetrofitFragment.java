@@ -113,7 +113,14 @@ public class RetrofitFragment extends Fragment {
 //                                    })
 //                                    .toList().toBlocking().single();
 
-                            List<WeatherData> weatherList = Observable.just(0,1,2,3,4,5,6,7,8,9)
+                            List<WeatherData> weatherList1 = Observable.from(new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15})
+                                    .map(i -> {
+                                        DayWeather w = weather.dayWeatherList.get(i);
+                                        return new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main);
+                                    })
+                                    .toList().toBlocking().single();
+
+                            List<WeatherData> weatherList2 = Observable.just(0,1,2,3,4,5,6,7,8,9)
                                     .map(i -> {
                                         DayWeather w = weather.dayWeatherList.get(i);
                                         return new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main);
@@ -126,7 +133,7 @@ public class RetrofitFragment extends Fragment {
 //                                weatherList.add(new WeatherData(w.weather.get(0).icon, w.temp.max, w.temp.min, w.weather.get(0).main));
 //                            }
 //
-                            ArrayAdapter<WeatherData> adapter = new WeatherAdapter(getActivity(), R.layout.weather_item, weatherList);
+                            ArrayAdapter<WeatherData> adapter = new WeatherAdapter(getActivity(), R.layout.weather_item, weatherList1);
                             listView.setAdapter(adapter);
                         }
                     }
