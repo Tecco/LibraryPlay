@@ -1,7 +1,7 @@
 package com.tecc0.libraryplay;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -16,7 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tecc0.libraryplay.fragment.AboutFragment;
+import com.tecc0.libraryplay.fragment.GalleryFragment;
 import com.tecc0.libraryplay.fragment.HomeFragment;
+import com.tecc0.libraryplay.fragment.RetrofitFragment;
+import com.tecc0.libraryplay.fragment.ScrollingFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Bind(R.id.nav_view) NavigationView navigationView;
+    @Bind(R.id.drawer_layout) DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -53,7 +56,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -75,19 +77,27 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.nav_camera:
-                replaceFragment(HomeFragment.newInstance());
+            case R.id.nav_home:
+                replaceFragment(HomeFragment.create());
                 break;
             case R.id.nav_gallery:
-                replaceFragment(AboutFragment.newInstance());
+                replaceFragment(GalleryFragment.create());
                 break;
-            case R.id.nav_slideshow:
+            case R.id.nav_recycler:
+                replaceFragment(RetrofitFragment.create());
                 break;
-            case R.id.nav_manage:
+            case R.id.nav_tools:
+                break;
+            case R.id.nav_toor:
+                startActivity(new Intent(this, TourActivity.class));
+                break;
+            case R.id.nav_coordinator:
+                replaceFragment(ScrollingFragment.create());
                 break;
             case R.id.nav_share:
                 break;
-            case R.id.nav_send:
+            case R.id.nav_about:
+                replaceFragment(AboutFragment.create());
                 break;
             default:
                 break;
@@ -96,6 +106,12 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findById(this, R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @OnClick(R.id.fab)
+    void fabClicked (View view) {
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 
     private void initToolbar () {
@@ -110,8 +126,7 @@ public class MainActivity extends AppCompatActivity
 
     private void initFragment() {
         final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit);
-        ft.replace(R.id.content_view, HomeFragment.newInstance(), HomeFragment.newInstance().getClass().getSimpleName());
+        ft.replace(R.id.content_view, HomeFragment.create(), HomeFragment.create().getClass().getSimpleName());
         ft.addToBackStack(null);
         ft.commit();
     }
@@ -122,11 +137,5 @@ public class MainActivity extends AppCompatActivity
         ft.replace(R.id.content_view, fragment, fragment.getClass().getSimpleName());
         ft.addToBackStack(null);
         ft.commit();
-    }
-
-    @OnClick(R.id.fab)
-    void fabClicked (View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
     }
 }
