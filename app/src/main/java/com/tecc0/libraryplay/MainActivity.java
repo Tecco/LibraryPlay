@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_gallery:
                 replaceFragment(GalleryFragment.create());
                 break;
-            case R.id.nav_recycler:
+            case R.id.nav_retrofit:
                 replaceFragment(RetrofitFragment.create());
                 break;
             case R.id.nav_tools:
