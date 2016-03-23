@@ -1,5 +1,6 @@
 package com.tecc0.libraryplay;
 
+import android.os.SystemClock;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.espresso.matcher.ViewMatchers;
@@ -15,6 +16,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
@@ -41,28 +43,39 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
     }
 
     @Test
-    public void checkPrecondition() {
+    public void testFirstDisplay() {
         // HomeのTextViewのタイトルがあっているか
-        onView(ViewMatchers.withId(R.id.home_title)).check(ViewAssertions.matches(ViewMatchers.withText("Study Libraries")));
+        onView(withId(R.id.home_title)).check(ViewAssertions.matches(ViewMatchers.withText("Study Libraries")));
         // FABが表示されているか
-        onView(ViewMatchers.withId(R.id.fab)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+        onView(withId(R.id.fab)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         // FABをクリック
-        onView(ViewMatchers.withId(R.id.fab)).perform(click());
+        onView(withId(R.id.fab)).perform(click());
+    }
 
+    @Test
+    public void testDrawerOpenClose() {
         openDrawer();
-        // Galleryをクリック
-        //onView(ViewMatchers.withId(R.id.nav_gallery)).perform(click());
-
         closeDrawer();
-        // Galleryをクリック
-        //onView(ViewMatchers.withId(R.id.nav_retrofit)).perform(click());
+    }
+
+    @Test
+    public void testShowGallery() {
+        openDrawer();
+        // TODO: paging
+        //onView(withId(R.id.nav_gallery)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+        closeDrawer();
     }
 
     private void openDrawer () {
         getActivity().runOnUiThread(() -> ((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).openDrawer(Gravity.LEFT));
+        SystemClock.sleep(1000);
     }
+
+
 
     private void closeDrawer () {
         getActivity().runOnUiThread(() -> ((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).closeDrawer(Gravity.LEFT));
+        SystemClock.sleep(1000);
     }
+
 }
