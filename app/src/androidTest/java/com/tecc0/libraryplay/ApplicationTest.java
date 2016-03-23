@@ -49,25 +49,20 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         // FABをクリック
         onView(ViewMatchers.withId(R.id.fab)).perform(click());
 
-        //openDrawer();
+        openDrawer();
         // Galleryをクリック
         //onView(ViewMatchers.withId(R.id.nav_gallery)).perform(click());
 
-        //closeDrawer();
+        closeDrawer();
         // Galleryをクリック
         //onView(ViewMatchers.withId(R.id.nav_retrofit)).perform(click());
     }
 
     private void openDrawer () {
-        //new Thread(() -> {
-            ((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).openDrawer(Gravity.LEFT);
-        //}).start();
-
+        getActivity().runOnUiThread(() -> ((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).openDrawer(Gravity.LEFT));
     }
 
     private void closeDrawer () {
-        //new Thread(() -> {
-            ((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).closeDrawer(Gravity.LEFT);
-        //}).start();
+        getActivity().runOnUiThread(() -> ((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).closeDrawer(Gravity.LEFT));
     }
 }
