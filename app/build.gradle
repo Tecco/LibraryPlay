@@ -11,6 +11,8 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -55,4 +57,5 @@ dependencies {
     // Espresso core
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
 
+    androidTestCompile 'junit:junit:4.12'
 }
