@@ -1,7 +1,6 @@
 package com.tecc0.libraryplay;
 
 import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.Espresso;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.runner.AndroidJUnit4;
@@ -11,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import static android.support.test.espresso.Espresso.onView;
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
@@ -38,6 +39,9 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
 
     @Test
     public void checkPrecondition() {
-        Espresso.onView(ViewMatchers.withId(R.id.home_title)).check(ViewAssertions.matches(ViewMatchers.withText("Study Libraries")));
+        // HomeのTextViewのタイトルがあっているか
+        onView(ViewMatchers.withId(R.id.home_title)).check(ViewAssertions.matches(ViewMatchers.withText("Study Libraries")));
+        // FABが表示されているか
+        onView(ViewMatchers.withId(R.id.fab)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 }
