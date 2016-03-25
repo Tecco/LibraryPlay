@@ -53,10 +53,8 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
     public void testFirstDisplay() {
         // HomeのTextViewのタイトルがあっているか
         onView(withId(R.id.home_title)).check(matches(withText("Study Libraries")));
-        // FABが表示されているか
-        onView(withId(R.id.fab)).check(matches(isDisplayed()));
-        // FABをクリック
-        onView(withId(R.id.fab)).perform(click());
+        // FABが表示されて、クリックできるか
+        onView(withId(R.id.fab)).check(matches(isDisplayed())).perform(click());
         // SnackBarのテキストがあっているか
         onView(allOf(withId(android.support.design.R.id.snackbar_text), withText("I am Android!"))).check(matches(isDisplayed()));
     }
@@ -88,22 +86,19 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         openDrawer();
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_tour));
         onView(withId(R.id.introViewPager)).check(matches(isDisplayed()));
-        // skipボタンが表示
+        // skipボタンが表示か
         onView(withId(R.id.skipIntroButton)).check(matches(isDisplayed()));
-        onView(withId(R.id.introViewPager)).perform(swipeLeft());
-        onView(withId(R.id.introViewPager)).perform(swipeRight());
-
-        onView(withId(R.id.introViewPager)).perform(swipeLeft());
-        onView(withId(R.id.introViewPager)).perform(swipeLeft());
-        onView(withId(R.id.introViewPager)).perform(swipeLeft());
-        // skipボタンが非表示
+        // 左右にスワイプできるか
+        onView(withId(R.id.introViewPager)).perform(swipeLeft()).perform(swipeRight());
+        // 4ページ目に進めるか
+        onView(withId(R.id.introViewPager)).perform(swipeLeft()).perform(swipeLeft()).perform(swipeLeft());
+        // skipボタンが非表示か
         onView(withId(R.id.skipIntroButton)).check(matches(not(isDisplayed())));
 
-        // doneボタンが表示・クリック
-        onView(withId(R.id.doneSlideButton)).check(matches(isDisplayed()));
-        onView(withId(R.id.doneSlideButton)).perform(click());
+        // doneボタンが表示され、クリックできるか
+        onView(withId(R.id.doneSlideButton)).check(matches(isDisplayed())).perform(click());
 
-        // TourActivityがfinish()してMainActivityに遷移
+        // TourActivityがfinish()してMainActivityに遷移するか
         onView(withId(R.id.fab)).check(matches(isDisplayed()));
     }
 
