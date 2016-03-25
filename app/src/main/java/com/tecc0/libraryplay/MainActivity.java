@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_tools:
                 break;
-            case R.id.nav_toor:
+            case R.id.nav_tour:
                 startActivity(new Intent(this, TourActivity.class));
                 break;
             case R.id.nav_coordinator:

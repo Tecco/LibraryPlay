@@ -22,7 +22,7 @@ public class ScrollingFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_coodinator, container, false);
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.coordinator_fab);
         fab.setOnClickListener(view1 -> Snackbar.make(view1, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
 
