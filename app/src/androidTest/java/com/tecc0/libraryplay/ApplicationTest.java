@@ -22,6 +22,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 
 /**
@@ -56,6 +57,8 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(R.id.fab)).check(matches(isDisplayed()));
         // FABをクリック
         onView(withId(R.id.fab)).perform(click());
+        // SnackBarのテキストがあっているか
+        onView(allOf(withId(android.support.design.R.id.snackbar_text), withText("I am Android!"))).check(matches(isDisplayed()));
     }
 
     @Test

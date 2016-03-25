@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity
 
     @OnClick(R.id.fab)
     void fabClicked (View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        Snackbar.make(view, "I am Android!", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }
 
