@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.Gravity;
 
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,8 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
@@ -81,7 +84,23 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         openDrawer();
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_tour));
         onView(withId(R.id.introViewPager)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-        closeDrawer();
+        // skipボタンが表示
+        onView(withId(R.id.skipIntroButton)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+        onView(withId(R.id.introViewPager)).perform(swipeLeft());
+        onView(withId(R.id.introViewPager)).perform(swipeRight());
+
+        onView(withId(R.id.introViewPager)).perform(swipeLeft());
+        onView(withId(R.id.introViewPager)).perform(swipeLeft());
+        onView(withId(R.id.introViewPager)).perform(swipeLeft());
+        // skipボタンが非表示
+        onView(withId(R.id.skipIntroButton)).check(ViewAssertions.matches(Matchers.not(ViewMatchers.isDisplayed())));
+
+        // doneボタンが表示・クリック
+        onView(withId(R.id.doneSlideButton)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+        onView(withId(R.id.doneSlideButton)).perform(click());
+
+        // TourActivityがfinish()してMainActivityに遷移
+        onView(withId(R.id.fab)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
     @Test
