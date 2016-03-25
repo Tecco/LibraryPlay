@@ -70,6 +70,7 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         openDrawer();
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_gallery));
         onView(withId(R.id.gallery_listview)).check(matches(isDisplayed()));
+        //onData(allOf(startsWith("[1]"), is(instanceOf(String.class)))).perform(click());
         closeDrawer();
     }
 
@@ -78,6 +79,11 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         openDrawer();
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_retrofit));
         onView(withId(R.id.retrofit_listview)).check(matches(isDisplayed()));
+        // FIXME: ListViewのItemの中身を拾う方法がわからんぼ
+        //onData(hasToString(startsWith("max"))).inAdapterView(withId(R.id.retrofit_listview)).atPosition(0).perform(click());
+        //onView(withId(R.id.toolbar)).check(matches(withText("Tokyo : JP")));
+        //onData(withId(R.id.retrofit_listview)).atPosition(0).perform(click());
+
         closeDrawer();
     }
 
@@ -94,10 +100,8 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(R.id.introViewPager)).perform(swipeLeft()).perform(swipeLeft()).perform(swipeLeft());
         // skipボタンが非表示か
         onView(withId(R.id.skipIntroButton)).check(matches(not(isDisplayed())));
-
         // doneボタンが表示され、クリックできるか
         onView(withId(R.id.doneSlideButton)).check(matches(isDisplayed())).perform(click());
-
         // TourActivityがfinish()してMainActivityに遷移するか
         onView(withId(R.id.fab)).check(matches(isDisplayed()));
     }
@@ -132,7 +136,7 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         SystemClock.sleep(1000);
     }
 
-    private void closeDrawer () {
+    private void closeDrawer() {
         getActivity().runOnUiThread(() -> ((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).closeDrawer(Gravity.LEFT));
         SystemClock.sleep(1000);
     }
