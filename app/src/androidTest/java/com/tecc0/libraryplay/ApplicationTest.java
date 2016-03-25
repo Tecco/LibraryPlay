@@ -117,7 +117,9 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
     public void testShowAbout() {
         openDrawer();
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_about));
-        onView(withId(R.id.about_textview)).check(matches(isDisplayed()));
+        // AboutのTextが表示されていて、内容があっているか
+        onView(withId(R.id.about_textview)).check(matches(isDisplayed()))
+                .check(matches(withText(getActivity().getString(R.string.about_fragment_title))));
         closeDrawer();
     }
 
