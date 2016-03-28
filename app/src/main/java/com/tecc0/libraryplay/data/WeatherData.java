@@ -5,10 +5,10 @@ package com.tecc0.libraryplay.data;
  */
 public class WeatherData {
 
-    private String iconId;
-    private float max;
-    private float min;
-    private String weather;
+    private final String iconId;
+    private final float max;
+    private final float min;
+    private final String weather;
 
     public WeatherData(String iconId, float max, float min, String weather) {
         this.iconId = iconId;

@@ -21,8 +21,8 @@ import butterknife.ButterKnife;
  */
 public class WeatherAdapter extends ArrayAdapter<WeatherData> {
 
-    private LayoutInflater inflater;
-    private int id;
+    private final LayoutInflater inflater;
+    private final int id;
 
     public WeatherAdapter(Context context, int id, List<WeatherData> data) {
         super(context, 0, data);
