@@ -28,7 +28,6 @@
         <item>Gson</item>
         <item>ObservableScrollView</item>
     </string-array>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

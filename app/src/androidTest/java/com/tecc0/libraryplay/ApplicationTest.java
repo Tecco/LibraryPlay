@@ -83,6 +83,7 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(R.id.retrofit_listview)).check(matches(isDisplayed()));
         // FIXME: ListViewのItemの中身を拾う方法がわからんぼ
         //onData(hasToString(startsWith("max"))).inAdapterView(withId(R.id.weather_item_max_textView)).atPosition(0).perform(click());
+        SystemClock.sleep(2000);
         // ListViewでやっとクリックできたんご！！
         onData(anything()).inAdapterView(withId(R.id.retrofit_listview)).atPosition(0).perform(click());
         //onView(withId(R.id.toolbar)).check(matches(withText("Tokyo : JP")));
