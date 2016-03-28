@@ -64,12 +64,12 @@ public class RetrofitFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Retrofit");
-        getWeatherApi(view);
+        getWeatherApi();
 
         return view;
     }
 
-    private void getWeatherApi(final View v) {// JSONのパーサー
+    private void getWeatherApi() {// JSONのパーサー
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(Date.class, new DateTypeAdapter())

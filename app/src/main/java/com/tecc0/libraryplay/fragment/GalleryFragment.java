@@ -61,7 +61,7 @@ public class GalleryFragment extends Fragment implements ObservableScrollViewCal
         ButterKnife.bind(this, view);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Picasso");
-        getFlickrApi(view);
+        getFlickrApi();
 
         listView.setScrollViewCallbacks(this);
 
@@ -75,7 +75,7 @@ public class GalleryFragment extends Fragment implements ObservableScrollViewCal
     }
 
 
-    private void getFlickrApi(final View v) {// JSONのパーサー
+    private void getFlickrApi() {// JSONのパーサー
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(Date.class, new DateTypeAdapter())
