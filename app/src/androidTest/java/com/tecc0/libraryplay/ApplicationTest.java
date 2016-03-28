@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
@@ -23,6 +24,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.not;
 
 /**
@@ -80,7 +82,9 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_retrofit));
         onView(withId(R.id.retrofit_listview)).check(matches(isDisplayed()));
         // FIXME: ListViewのItemの中身を拾う方法がわからんぼ
-        //onData(hasToString(startsWith("max"))).inAdapterView(withId(R.id.retrofit_listview)).atPosition(0).perform(click());
+        //onData(hasToString(startsWith("max"))).inAdapterView(withId(R.id.weather_item_max_textView)).atPosition(0).perform(click());
+        // ListViewでやっとクリックできたんご！！
+        onData(anything()).inAdapterView(withId(R.id.retrofit_listview)).atPosition(0).perform(click());
         //onView(withId(R.id.toolbar)).check(matches(withText("Tokyo : JP")));
         //onData(withId(R.id.retrofit_listview)).atPosition(0).perform(click());
 
