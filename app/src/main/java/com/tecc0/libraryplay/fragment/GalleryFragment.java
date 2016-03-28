@@ -50,8 +50,7 @@ public class GalleryFragment extends Fragment implements ObservableScrollViewCal
     }
 
     public static GalleryFragment create() {
-        GalleryFragment fragment = new GalleryFragment();
-        return fragment;
+        return new GalleryFragment();
     }
 
     @Override

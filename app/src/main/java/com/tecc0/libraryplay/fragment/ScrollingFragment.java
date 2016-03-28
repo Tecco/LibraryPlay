@@ -30,8 +30,7 @@ public class ScrollingFragment extends Fragment {
     }
 
     public static ScrollingFragment create() {
-        ScrollingFragment fragment = new ScrollingFragment();
-        return fragment;
+        return new ScrollingFragment();
     }
 
 }

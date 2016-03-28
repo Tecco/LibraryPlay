@@ -20,8 +20,7 @@ public class HomeFragment extends Fragment {
     }
 
     public static HomeFragment create() {
-        HomeFragment fragment = new HomeFragment();
-        return fragment;
+        return new HomeFragment();
     }
 
     @Override

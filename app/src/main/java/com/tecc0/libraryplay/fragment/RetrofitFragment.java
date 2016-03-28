@@ -53,8 +53,7 @@ public class RetrofitFragment extends Fragment {
     }
 
     public static RetrofitFragment create() {
-        RetrofitFragment fragment = new RetrofitFragment();
-        return fragment;
+        return new RetrofitFragment();
     }
 
     @Override
