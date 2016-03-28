@@ -39,7 +39,7 @@ import rx.schedulers.Schedulers;
 
 public class RetrofitFragment extends Fragment {
 
-    private static int WEATHER_API_GET_COUNT = 15;
+    private static final int WEATHER_API_GET_COUNT = 15;
 
     @Bind(R.id.retrofit_listview) ListView listView;
 
