@@ -60,6 +60,7 @@ public class GalleryFragment extends Fragment implements ObservableScrollViewCal
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
         ButterKnife.bind(this, view);
 
+        // TODO: こゆのはぬるぽになるので気をつけよう私
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Picasso");
         getFlickrApi();
 
