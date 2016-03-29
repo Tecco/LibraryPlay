@@ -15,16 +15,19 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
 /**
@@ -59,6 +62,12 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         onView(withId(R.id.fab)).check(matches(isDisplayed())).perform(click());
         // SnackBarのテキストがあっているか
         onView(allOf(withId(android.support.design.R.id.snackbar_text), withText("I am Android!"))).check(matches(isDisplayed()));
+        // オーバーフローメニューを開けるか
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+        // Settingsをクリックできるか
+        onView(withText(R.string.action_settings)).perform(click());
+        // Toastのテキストがあっているか(正確に指定しているわけではない
+        onView(withText("Settings!")).inRoot(withDecorView(not(is(getActivity().getWindow().getDecorView())))).perform(click());
     }
 
     @Test

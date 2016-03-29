@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.tecc0.libraryplay.fragment.AboutFragment;
 import com.tecc0.libraryplay.fragment.GalleryFragment;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
+                Toast.makeText(this, "Settings!", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
@@ -111,7 +113,6 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
 
-        DrawerLayout drawer = findById(this, R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
