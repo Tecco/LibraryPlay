@@ -8,7 +8,7 @@
 
     <string name="drawer_home">Home</string>
     <string name="drawer_gallery">Picasso</string>
-    <string name="drawer_recycler">Retrofit</string>
+    <string name="drawer_retrofit">Retrofit</string>
     <string name="drawer_tools">Tools</string>
     <string name="drawer_tour">tour</string>
     <string name="drawer_coordinator">Coordinator</string>
