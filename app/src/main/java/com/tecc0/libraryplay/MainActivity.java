@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_retrofit:
                 replaceFragment(RetrofitFragment.create());
                 break;
-            case R.id.nav_tools:
+            case R.id.nav_recycler:
                 break;
             case R.id.nav_tour:
                 startActivity(new Intent(this, TourActivity.class));
