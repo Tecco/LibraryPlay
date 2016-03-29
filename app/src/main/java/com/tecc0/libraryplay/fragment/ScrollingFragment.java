@@ -20,12 +20,9 @@ public class ScrollingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
 
-        View view = inflater.inflate(R.layout.activity_scrolling, container, false);
+        View view = inflater.inflate(R.layout.fragment_coodinator, container, false);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.coordinator_fab);
         fab.setOnClickListener(view1 -> Snackbar.make(view1, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
 
@@ -33,8 +30,7 @@ public class ScrollingFragment extends Fragment {
     }
 
     public static ScrollingFragment create() {
-        ScrollingFragment fragment = new ScrollingFragment();
-        return fragment;
+        return new ScrollingFragment();
     }
 
 }

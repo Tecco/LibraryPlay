@@ -83,12 +83,12 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_gallery:
                 replaceFragment(GalleryFragment.create());
                 break;
-            case R.id.nav_recycler:
+            case R.id.nav_retrofit:
                 replaceFragment(RetrofitFragment.create());
                 break;
-            case R.id.nav_tools:
+            case R.id.nav_recycler:
                 break;
-            case R.id.nav_toor:
+            case R.id.nav_tour:
                 startActivity(new Intent(this, TourActivity.class));
                 break;
             case R.id.nav_coordinator:
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity
 
     @OnClick(R.id.fab)
     void fabClicked (View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        Snackbar.make(view, "I am Android!", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }
 
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findById(this, R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
     }
 

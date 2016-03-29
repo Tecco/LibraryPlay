@@ -1,8 +1,10 @@
 package com.tecc0.libraryplay;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 
 import com.vlonjatg.android.apptourlibrary.AppTour;
 import com.vlonjatg.android.apptourlibrary.MaterialSlide;
@@ -12,10 +14,11 @@ public class TourActivity extends AppTour {
     @Override
     public void init(Bundle savedInstanceState) {
 
-        int firstColor = getResources().getColor(R.color.flat_turquoise);
-        int secondColor = getResources().getColor(R.color.flat_emerald);
-        int thirdColor = getResources().getColor(R.color.flat_peter_river);
-        int fourthColor = getResources().getColor(R.color.flat_amethyst);
+        Context context = getApplicationContext();
+        int firstColor = ContextCompat.getColor(context, R.color.flat_turquoise);
+        int secondColor = ContextCompat.getColor(context, R.color.flat_emerald);
+        int thirdColor = ContextCompat.getColor(context, R.color.flat_peter_river);
+        int fourthColor = ContextCompat.getColor(context, R.color.flat_amethyst);
 
         Fragment firstSlide = MaterialSlide.newInstance(R.drawable.ic_menu_camera, "絶え間なく注ぐ愛の名を",
                 "永遠と呼ぶことができたなら", Color.WHITE, Color.WHITE);

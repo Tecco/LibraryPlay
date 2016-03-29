@@ -5,6 +5,7 @@
     tools:context="com.tecc0.libraryplay.fragment.AboutFragment">
 
     <TextView
+        android:id="@+id/about_textview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/about_fragment_title" />

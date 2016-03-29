@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -25,6 +26,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -37,17 +39,21 @@ import rx.schedulers.Schedulers;
 
 public class RetrofitFragment extends Fragment {
 
-    private static int WEATHER_API_GET_COUNT = 15;
+    private static final int WEATHER_API_GET_COUNT = 15;
 
     @Bind(R.id.retrofit_listview) ListView listView;
+
+    @OnItemClick(R.id.retrofit_listview)
+    void weatherItemClicked (int position) {
+        Toast.makeText(getActivity(), ((WeatherData)listView.getItemAtPosition(position)).getWeather(), Toast.LENGTH_LONG).show();
+    }
 
     public RetrofitFragment() {
 
     }
 
     public static RetrofitFragment create() {
-        RetrofitFragment fragment = new RetrofitFragment();
-        return fragment;
+        return new RetrofitFragment();
     }
 
     @Override
@@ -58,12 +64,12 @@ public class RetrofitFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Retrofit");
-        getWeatherApi(view);
+        getWeatherApi();
 
         return view;
     }
 
-    private void getWeatherApi(final View v) {// JSONのパーサー
+    private void getWeatherApi() {// JSONのパーサー
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(Date.class, new DateTypeAdapter())

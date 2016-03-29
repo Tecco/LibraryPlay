@@ -1,7 +1,5 @@
 package com.tecc0.libraryplay.api;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 /**

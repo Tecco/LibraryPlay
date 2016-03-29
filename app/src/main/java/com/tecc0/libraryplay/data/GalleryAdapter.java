@@ -21,8 +21,8 @@ import butterknife.ButterKnife;
  */
 public class GalleryAdapter extends ArrayAdapter<GalleryData> {
 
-    private LayoutInflater inflater;
-    private int id;
+    private final LayoutInflater inflater;
+    private final int id;
 
     public GalleryAdapter(Context context, int id , List<GalleryData> data) {
         super(context, 0, data);

@@ -5,10 +5,10 @@ package com.tecc0.libraryplay.data;
  */
 public class GalleryData {
 
-    private int imageId;
-    private String date;
-    private String link;
-    private String userName;
+    private final int imageId;
+    private final String date;
+    private final String link;
+    private final String userName;
 
     public GalleryData(int imageId, String date, String link, String userName) {
         this.imageId = imageId;

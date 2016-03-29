@@ -1,7 +1,6 @@
 package com.tecc0.libraryplay.data;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.tecc0.libraryplay.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -23,8 +21,8 @@ import butterknife.ButterKnife;
  */
 public class WeatherAdapter extends ArrayAdapter<WeatherData> {
 
-    private LayoutInflater inflater;
-    private int id;
+    private final LayoutInflater inflater;
+    private final int id;
 
     public WeatherAdapter(Context context, int id, List<WeatherData> data) {
         super(context, 0, data);

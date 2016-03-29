@@ -50,8 +50,7 @@ public class GalleryFragment extends Fragment implements ObservableScrollViewCal
     }
 
     public static GalleryFragment create() {
-        GalleryFragment fragment = new GalleryFragment();
-        return fragment;
+        return new GalleryFragment();
     }
 
     @Override
@@ -61,8 +60,9 @@ public class GalleryFragment extends Fragment implements ObservableScrollViewCal
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
         ButterKnife.bind(this, view);
 
+        // TODO: こゆのはぬるぽになるので気をつけよう私
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Picasso");
-        getFlickrApi(view);
+        getFlickrApi();
 
         listView.setScrollViewCallbacks(this);
 
@@ -76,7 +76,7 @@ public class GalleryFragment extends Fragment implements ObservableScrollViewCal
     }
 
 
-    private void getFlickrApi(final View v) {// JSONのパーサー
+    private void getFlickrApi() {// JSONのパーサー
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(Date.class, new DateTypeAdapter())
