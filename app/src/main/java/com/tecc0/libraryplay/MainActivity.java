@@ -13,6 +13,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -194,9 +195,32 @@ public class MainActivity extends AppCompatActivity
 
     private void replaceFragment(Fragment fragment) {
         final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit);
+
+        if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.pref_key_settings_animation_on), false)) {
+            setAnimationType(ft);
+        }
+
         ft.replace(R.id.content_view, fragment, fragment.getClass().getSimpleName());
         ft.addToBackStack(null);
         ft.commit();
+    }
+
+    private void setAnimationType(FragmentTransaction ft) {
+
+        String animationType = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_key_settings_animation_type), "0");
+        switch (animationType) {
+            case "0":
+                ft.setCustomAnimations(R.anim.fragment_enter_slide, R.anim.fragment_exit_slide);
+                break;
+            case "1":
+                ft.setCustomAnimations(R.anim.fragment_enter_alpha, R.anim.fragment_exit_alpha);
+                break;
+            case "2":
+                ft.setCustomAnimations(R.anim.fragment_enter_rotate, R.anim.fragment_exit_rotate);
+                break;
+            case "3":
+                ft.setCustomAnimations(R.anim.fragment_enter_triple, R.anim.fragment_exit_triple);
+                break;
+        }
     }
 }

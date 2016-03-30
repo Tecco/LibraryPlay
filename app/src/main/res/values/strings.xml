@@ -21,6 +21,19 @@
 
     <string name="pref_settings">settings</string>
 
+    <string name="settings_animation_array_title">Select animation</string>
+    <string name="settings_edittext_title">Search word</string>
+    <string name="settings_edittext_summary">Input Search word via Flickr API</string>
+    <string name="settings_general_category_title">General Settings</string>
+    <string name="settings_api_category_title">API Settings</string>
+    <string name="settings_fab_title">Show FAB</string>
+    <string name="settings_fab_summary">Show / Hide FAB</string>
+
+    <string name="pref_key_settings_animation_on">settings_animation_on</string>
+    <string name="pref_key_settings_animation_type">settings_animation_name</string>
+    <string name="pref_key_settings_search_word">settings_search_word</string>
+    <string name="pref_key_settings_fab_show">settings_fab_show</string>
+
     <string-array name="study_libraries_name">
         <item>Picasso</item>
         <item>Dagger2</item>
@@ -32,14 +45,18 @@
         <item>ObservableScrollView</item>
     </string-array>
 
-    <string-array name="entry_sample">
-        <item>hoge</item>
-        <item>huga</item>
+    <string-array name="entry_animation">
+        <item>Slide</item>
+        <item>Fade</item>
+        <item>Rotate</item>
+        <item>All</item>
     </string-array>
 
-    <string-array name="entry_sample_values">
-        <item>1</item>
+    <string-array name="entry_animation_values">
         <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string name="large_text">

@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    <PreferenceCategory android:title="Category Title" >
-        <ListPreference
-            android:title="Title"
-            android:key="@string/pref_settings"
-            android:entries="@array/entry_sample"
-            android:entryValues="@array/entry_sample_values"/>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/settings_general_category_title">
+
+        <CheckBoxPreference
+            android:key="@string/pref_key_settings_animation_on"
+            android:title="Enable animation" />
+
+            <ListPreference
+                android:key="@string/pref_key_settings_animation_type"
+                android:title="@string/settings_animation_array_title"
+                android:summary="Slide"
+                android:dependency="@string/pref_key_settings_animation_on"
+                android:layout="?android:attr/preferenceLayoutChild"
+                android:entries="@array/entry_animation"
+                android:entryValues="@array/entry_animation_values"
+                android:dialogTitle="@string/settings_animation_array_title" />
+
+    </PreferenceCategory>
+
+    <SwitchPreferenceCompat
+        android:key="@string/pref_key_settings_fab_show"
+        android:title="@string/settings_fab_title"
+        android:summary="@string/settings_fab_summary"/>
+
+    <PreferenceCategory
+        android:title="@string/settings_api_category_title">
+
+        <EditTextPreference
+            android:key="@string/pref_key_settings_search_word"
+            android:title="@string/settings_edittext_title"
+            android:summary="@string/settings_edittext_summary"
+            android:dialogTitle="@string/settings_edittext_title" />
+
+        <!--<EditTextPreference-->
+            <!--android:key="@string/pref_key_settings_search_word"-->
+            <!--android:title="@string/settings_edittext_title"-->
+            <!--android:summary="@string/settings_edittext_summary"-->
+            <!--android:dialogTitle="@string/settings_edittext_title" />-->
+
     </PreferenceCategory>
 
 </PreferenceScreen>
