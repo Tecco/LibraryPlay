@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="Category Title" >
+        <ListPreference
+            android:title="Title"
+            android:key="@string/pref_settings"
+            android:entries="@array/entry_sample"
+            android:entryValues="@array/entry_sample_values"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

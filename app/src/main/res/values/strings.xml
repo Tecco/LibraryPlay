@@ -19,6 +19,8 @@
     <string name="home_fragment_title">Study Libraries</string>
     <string name="about_fragment_title">This App is Test App.\nI wanna study libraries I haven\'t been used.\nWelcome to join me reviewing!\n\nby Tecco</string>
 
+    <string name="pref_settings">settings</string>
+
     <string-array name="study_libraries_name">
         <item>Picasso</item>
         <item>Dagger2</item>
@@ -29,6 +31,17 @@
         <item>Gson</item>
         <item>ObservableScrollView</item>
     </string-array>
+
+    <string-array name="entry_sample">
+        <item>hoge</item>
+        <item>huga</item>
+    </string-array>
+
+    <string-array name="entry_sample_values">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
