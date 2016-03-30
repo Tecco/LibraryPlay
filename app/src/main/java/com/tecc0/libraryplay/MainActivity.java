@@ -24,6 +24,7 @@ import com.tecc0.libraryplay.fragment.GalleryFragment;
 import com.tecc0.libraryplay.fragment.HomeFragment;
 import com.tecc0.libraryplay.fragment.RetrofitFragment;
 import com.tecc0.libraryplay.fragment.ScrollingFragment;
+import com.tecc0.libraryplay.fragment.SettingsFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -109,6 +110,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_about:
                 replaceFragment(AboutFragment.create());
                 break;
+            case R.id.nav_settings:
+                replaceFragment(SettingsFragment.create());
+                break;
             default:
                 break;
         }
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findById(this, R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+        drawer.setDrawerListener(toggle);
         toggle.syncState();
     }
 
